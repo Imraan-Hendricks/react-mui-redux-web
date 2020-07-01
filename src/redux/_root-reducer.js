@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import types from './_root-types';
 import modelReducer from './_root-model';
 
 const appReducer = combineReducers({
@@ -8,8 +7,6 @@ const appReducer = combineReducers({
 
 const rootReducer = (state, action) => {
   switch (action.type) {
-    case types.RESET_APP:
-      return appReducer(undefined, action);
     default:
       return appReducer(state, action);
   }

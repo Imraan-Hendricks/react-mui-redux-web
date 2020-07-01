@@ -1,8 +1,17 @@
-const initialState = {};
+import persist from './_root-persist';
+import types from './_root-types';
 
-export default function (state = initialState, action) {
+const initialState = {
+  ex1: 'data',
+};
+
+const modelReducer = (state = initialState, action) => {
   switch (action.type) {
+    case types.RESET_APP:
+      return initialState;
     default:
       return state;
   }
-}
+};
+
+export default persist(modelReducer);

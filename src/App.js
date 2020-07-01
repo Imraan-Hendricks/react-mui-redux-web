@@ -1,6 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import store from './redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from './redux/store';
 import theme from './material-ui/theme';
 import { ThemeProvider } from '@material-ui/core/styles';
 import Routes from './routes/routes';
@@ -8,11 +9,13 @@ import Routes from './routes/routes';
 const App = () => {
   return (
     <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <div>
-          <Routes />
-        </div>
-      </ThemeProvider>
+      <PersistGate loading={null} persistor={persistor}>
+        <ThemeProvider theme={theme}>
+          <div>
+            <Routes />
+          </div>
+        </ThemeProvider>
+      </PersistGate>
     </Provider>
   );
 };
