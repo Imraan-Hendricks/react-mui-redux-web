@@ -5,7 +5,7 @@ const initialState = {
   ex1: 'data',
 };
 
-const modelReducer = (state = initialState, action) => {
+const stateReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.RESET_APP:
       return initialState;
@@ -14,4 +14,4 @@ const modelReducer = (state = initialState, action) => {
   }
 };
 
-export default persist(modelReducer);
+export default persist(stateReducer);

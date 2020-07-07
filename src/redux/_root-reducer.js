@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import modelReducer from './_root-model';
+import stateReducer from './_root-state';
 
 const appReducer = combineReducers({
-  model: modelReducer,
+  state: stateReducer,
 });
 
 const rootReducer = (state, action) => {

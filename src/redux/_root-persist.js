@@ -20,7 +20,7 @@ const migrations = {
 };
 
 const persistConfig = {
-  key: 'model',
+  key: 'rootState',
   version: -1,
   storage,
   whitelist: ['ex1'],
