@@ -1,13 +1,11 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import useRoutes from './use-routes';
 import Home from './home/home';
 
-const Routes = () => (
-  <BrowserRouter>
-    <Switch>
-      <Route component={Home} exact path='/' strict />
-    </Switch>
-  </BrowserRouter>
-);
+const Routes = () => {
+  const { home } = useRoutes();
+
+  return <div>{home && <Home match={home} />}</div>;
+};
 
 export default Routes;
