@@ -1,4 +1,4 @@
-import actions from './_root-actions';
+import actions from './root-actions';
 
 const resetApp = () => (dispatch) => {
   dispatch(actions.resetApp());

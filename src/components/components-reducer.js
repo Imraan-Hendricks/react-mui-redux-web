@@ -1,15 +1,15 @@
 import { combineReducers } from 'redux';
-import stateReducer from './_navbar-state';
+import navbarReducer from './navbar/redux/navbar-reducer';
 
 const combinedReducer = combineReducers({
-  state: stateReducer,
+  navbar: navbarReducer,
 });
 
-const navbarReducer = (state, action) => {
+const componentsReducer = (state, action) => {
   switch (action.type) {
     default:
       return combinedReducer(state, action);
   }
 };
 
-export default navbarReducer;
+export default componentsReducer;

@@ -1,4 +1,4 @@
-import types from './_root-types';
+import types from './root-types';
 
 const resetApp = () => {
   return {

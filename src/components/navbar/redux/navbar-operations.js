@@ -1,4 +1,4 @@
-import actions from './_navbar-actions';
+import actions from './navbar-actions';
 
 const reset = () => (dispatch) => {
   dispatch(actions.reset());

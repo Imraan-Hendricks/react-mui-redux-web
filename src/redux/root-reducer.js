@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import componentsReducer from '../components/_components-reducer';
-import stateReducer from './_root-state';
+import componentsReducer from '../components/components-reducer';
+import stateReducer from './root-state';
 
 const appReducer = combineReducers({
   components: componentsReducer,

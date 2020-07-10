@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import navbarOperations from '../../components/navbar/_navbar-operations';
+import navbarOperations from '../../components/navbar/redux/navbar-operations';
 import { useDispatch } from 'react-redux';
 
 const Home = () => {

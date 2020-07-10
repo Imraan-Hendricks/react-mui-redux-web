@@ -1,5 +1,5 @@
-import persist from './_root-persist';
-import types from './_root-types';
+import persist from './root-persist';
+import types from './root-types';
 
 const initialState = {
   ex1: 'data',

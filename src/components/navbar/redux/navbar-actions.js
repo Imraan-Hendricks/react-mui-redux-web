@@ -1,4 +1,4 @@
-import types from './_navbar-types';
+import types from './navbar-types';
 
 const reset = () => {
   return {

@@ -1,5 +1,5 @@
-import rootTypes from '../../redux/_root-types';
-import types from './_navbar-types';
+import rootTypes from '../../../redux/root-types';
+import types from './navbar-types';
 
 const initialState = {
   active: null,
