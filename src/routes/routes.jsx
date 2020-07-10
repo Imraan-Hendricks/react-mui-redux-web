@@ -1,17 +1,15 @@
 import React from 'react';
-import useRoutes from './use-routes';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Navbar from '../components/navbar/navbar';
 import Home from './home/home';
 
-const Routes = () => {
-  const { home } = useRoutes();
-
-  return (
-    <div>
-      <Navbar />
-      {home && <Home match={home} />}
-    </div>
-  );
-};
+const Routes = () => (
+  <BrowserRouter>
+    <Navbar />
+    <Switch>
+      <Route component={Home} exact path='/' strict />
+    </Switch>
+  </BrowserRouter>
+);
 
 export default Routes;

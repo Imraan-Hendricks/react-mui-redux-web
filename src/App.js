@@ -4,7 +4,6 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './redux/store';
 import theme from './material-ui/theme';
 import { ThemeProvider } from '@material-ui/core/styles';
-import { BrowserRouter } from 'react-router-dom';
 import Routes from './routes/routes';
 
 const App = () => {
@@ -12,9 +11,7 @@ const App = () => {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <ThemeProvider theme={theme}>
-          <BrowserRouter>
-            <Routes />
-          </BrowserRouter>
+          <Routes />
         </ThemeProvider>
       </PersistGate>
     </Provider>
