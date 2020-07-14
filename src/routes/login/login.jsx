@@ -1,4 +1,5 @@
 import React from 'react';
+import LoginComp from '../../components/login/login';
 import useLogin from './use-login';
 
 const Login = () => {
@@ -6,7 +7,7 @@ const Login = () => {
 
   return (
     <div>
-      <h1>Login</h1>
+      <LoginComp />
     </div>
   );
 };
