@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import LoadSession from '../components/load-session/load-session';
 import Backdrop from '../components/backdrop/backdrop';
 import Navbar from '../components/navbar/navbar';
 import Home from './home/home';
@@ -8,6 +9,7 @@ import NotFound from './not-found/not-found';
 
 const Routes = () => (
   <BrowserRouter>
+    <LoadSession />
     <Backdrop />
     <Navbar />
     <Switch>
