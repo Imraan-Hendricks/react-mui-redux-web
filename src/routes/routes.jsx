@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import LoadSession from '../components/load-session/load-session';
 import Backdrop from '../components/backdrop/backdrop';
+import Snackbar from '../components/snackbar/snackbar';
 import Navbar from '../components/navbar/navbar';
 import Home from './home/home';
 import Login from './login/login';
@@ -11,6 +12,7 @@ const Routes = () => (
   <BrowserRouter>
     <LoadSession />
     <Backdrop />
+    <Snackbar />
     <Navbar />
     <Switch>
       <Route component={Home} exact path='/' strict />
