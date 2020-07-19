@@ -21,7 +21,12 @@ const LoadSession = () => {
   const reqAuthInfo = useCallback(async () => {
     const [authInfo, err] = await handle(getAuthInfo());
     if (err) {
-      dispatch(snackbarOperations.pushNotification({ msg: err[0].msg }));
+      dispatch(
+        snackbarOperations.pushNotification({
+          msg: err[0].msg,
+          type: 'error',
+        })
+      );
       return setIsReady(true);
     }
 

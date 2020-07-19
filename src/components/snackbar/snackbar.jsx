@@ -1,13 +1,14 @@
 import React, { Fragment } from 'react';
 import { Snackbar, IconButton } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
+import Message from './message/message';
 import useSnackbar from './use-snackbar';
 import { useSnackbarStyles } from './snackbar-styles';
 
 const SimpleSnackbar = () => {
-  const { msg, open, handleClose } = useSnackbar();
+  const { msg, type, open, handleClose } = useSnackbar();
 
-  const classes = useSnackbarStyles();
+  const classes = useSnackbarStyles({ type });
 
   return (
     <Snackbar
@@ -18,7 +19,7 @@ const SimpleSnackbar = () => {
       open={open}
       autoHideDuration={6000}
       onClose={handleClose}
-      message={msg}
+      message={<Message msg={msg} type={type} />}
       ContentProps={{
         classes: {
           root: classes.snackbar,
@@ -29,7 +30,9 @@ const SimpleSnackbar = () => {
           <IconButton
             size='small'
             aria-label='close'
-            color='primary'
+            classes={{
+              root: classes.iconButton,
+            }}
             onClick={handleClose}>
             <CloseIcon fontSize='small' />
           </IconButton>

@@ -25,6 +25,13 @@ const Snackbar = () => {
     return notifications[0].msg;
   };
 
+  const getType = () => {
+    if (notifications.length === 0) {
+      return undefined;
+    }
+    return notifications[0].type;
+  };
+
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -43,6 +50,7 @@ const Snackbar = () => {
 
   return {
     msg: getMsg(),
+    type: getType(),
     open,
     handleClose,
   };
