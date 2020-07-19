@@ -7,7 +7,7 @@ import { useSocialStyles } from './social-styles';
 const Social = () => {
   const classes = useSocialStyles();
   return (
-    <div className={classes.socialWrapper}>
+    <div className={classes.root}>
       <div className={classes.social}>
         <List component='ul'>
           <LoginStrategy

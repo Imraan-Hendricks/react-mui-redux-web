@@ -8,12 +8,7 @@ const LoginStrategy = (props) => {
     <ListItem button component='a' href={getUrlPrefix() + props.url}>
       <div className={classes.listInner}>
         <ListItemIcon>{props.icon}</ListItemIcon>
-        <ListItemText
-          primary={props.text}
-          classes={{
-            root: classes.listItemText,
-          }}
-        />
+        <ListItemText primary={props.text} />
       </div>
     </ListItem>
   );

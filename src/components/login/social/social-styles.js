@@ -1,22 +1,18 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useSocialStyles = makeStyles((theme) => ({
-  socialWrapper: {
-    width: '100%',
-    [theme.breakpoints.up('lg')]: {
-      width: '50%',
-    },
+  root: {
+    flexGrow: 1,
+    flexBasis: 0,
   },
 
   social: {
     width: '300px',
     marginTop: '5px',
     marginBottom: '20px',
-    marginLeft: 'auto',
-    marginRight: 'auto',
     [theme.breakpoints.up('lg')]: {
-      marginLeft: '0px',
-      marginTop: '110px',
+      marginTop: '0',
+      marginBottom: '0',
     },
   },
 }));
@@ -29,14 +25,12 @@ const useIconsStyles = makeStyles({
 
 const useLoginStrategyStyles = makeStyles({
   listInner: {
+    display: 'flex',
+    alignItems: 'center',
     marginLeft: 'auto',
     marginRight: 'auto',
-    marginTop: '10px',
-    display: 'flex',
-  },
-
-  listItemText: {
-    marginTop: '7px',
+    marginTop: '5px',
+    marginBottom: '5px',
   },
 });
 

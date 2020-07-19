@@ -1,18 +1,15 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useLocalStyles = makeStyles((theme) => ({
-  localWrapper: {
-    width: '100%',
-    [theme.breakpoints.up('lg')]: {
-      width: '50%',
-    },
+  root: {
+    flexGrow: 1,
+    flexBasis: 0,
   },
 
   formWrapper: {
     width: '300px',
-    marginLeft: 'auto',
-    marginRight: 'auto',
     [theme.breakpoints.up('lg')]: {
+      marginLeft: 'auto',
       marginRight: '0px',
     },
   },

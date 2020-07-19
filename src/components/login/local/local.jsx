@@ -6,7 +6,7 @@ import { useLocalStyles } from './local-styles';
 const Local = () => {
   const classes = useLocalStyles();
   return (
-    <div className={classes.localWrapper}>
+    <div className={classes.root}>
       <div className={classes.formWrapper}>
         <AccountCircle className={classes.accountIcon} />
         <form noValidate autoComplete='off'>
