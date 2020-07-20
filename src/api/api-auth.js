@@ -12,4 +12,16 @@ const getAuthInfo = () => {
   });
 };
 
-export { getAuthInfo };
+const logout = () => {
+  return new Promise((resolve, reject) => {
+    handleFetch('/api/auth/logout')
+      .then((authInfo) => {
+        resolve(authInfo);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+
+export { getAuthInfo, logout };
