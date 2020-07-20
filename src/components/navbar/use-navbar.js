@@ -1,9 +1,15 @@
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Navbar = () => {
   const history = useHistory();
 
-  const isAuthenticated = false;
+  const userId = useSelector((state) => state.components.auth.state._id);
+
+  const isAuthenticated = () => {
+    if (!userId) return false;
+    return true;
+  };
 
   const redirect = (url) => {
     if (url && history) {
@@ -56,7 +62,7 @@ const Navbar = () => {
   const links = [home, contact, login];
 
   const getLinks = () => {
-    if (isAuthenticated) {
+    if (isAuthenticated()) {
       return authLinks;
     }
     return links;
