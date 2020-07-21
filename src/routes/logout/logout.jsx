@@ -1,4 +1,5 @@
 import React from 'react';
+import LogoutComp from '../../components/logout/logout';
 import useLogout from './use-logout';
 
 const Logout = () => {
@@ -6,7 +7,7 @@ const Logout = () => {
 
   return (
     <div>
-      <h1>Logout</h1>
+      <LogoutComp />
     </div>
   );
 };
