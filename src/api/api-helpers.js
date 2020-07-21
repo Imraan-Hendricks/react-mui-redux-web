@@ -1,5 +1,5 @@
-const handleFetch = async (endpoint) => {
-  const res = await fetch(endpoint);
+const handleFetch = async (endpoint, config) => {
+  const res = await fetch(endpoint, config);
 
   if (!res.ok) {
     const err = [
