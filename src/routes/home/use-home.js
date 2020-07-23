@@ -1,15 +1,7 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import navbarOperations from '../../components/navbar/redux/navbar-operations';
+import useActiveNav from '../../hooks/active-nav';
 
 const Home = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(navbarOperations.setActive('home'));
-  }, [dispatch]);
-
-  return;
+  useActiveNav('home');
 };
 
 export default Home;

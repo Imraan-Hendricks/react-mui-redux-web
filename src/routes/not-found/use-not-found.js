@@ -1,15 +1,10 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import navbarOperations from '../../components/navbar/redux/navbar-operations';
+import useActiveNav from '../../hooks/active-nav';
 
 const NotFound = () => {
-  const dispatch = useDispatch();
   const history = useHistory();
 
-  useEffect(() => {
-    dispatch(navbarOperations.setActive('notFound'));
-  }, [dispatch]);
+  useActiveNav('notFound');
 
   const redirect = (url) => {
     if (url && history) {
