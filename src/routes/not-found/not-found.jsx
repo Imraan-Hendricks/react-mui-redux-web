@@ -4,7 +4,7 @@ import useNotFound from './use-not-found';
 import { useNotFoundStyles } from './not-found-styles';
 
 const NotFound = () => {
-  const { redirect } = useNotFound();
+  const { setUrl } = useNotFound();
 
   const classes = useNotFoundStyles();
 
@@ -15,7 +15,7 @@ const NotFound = () => {
         variant='contained'
         color='primary'
         className={classes.button}
-        onClick={() => redirect('/')}>
+        onClick={() => setUrl('/')}>
         site home
       </Button>
     </div>

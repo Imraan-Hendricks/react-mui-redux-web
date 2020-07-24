@@ -1,22 +1,11 @@
-import { useHistory } from 'react-router-dom';
 import useActiveNav from '../../hooks/active-nav';
+import useRedirect from '../../hooks/redirect';
 
 const NotFound = () => {
-  const history = useHistory();
-
   useActiveNav('notFound');
+  const { setUrl } = useRedirect();
 
-  const redirect = (url) => {
-    if (url && history) {
-      if (url === '/back') {
-        history.goBack();
-        return;
-      }
-      history.push(url);
-    }
-  };
-
-  return { redirect };
+  return { setUrl };
 };
 
 export default NotFound;
