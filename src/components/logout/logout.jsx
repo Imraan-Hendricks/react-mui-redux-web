@@ -12,7 +12,7 @@ const Logout = () => {
 
   const [state, setState] = useState('default');
 
-  const { setUrl } = useRedirect();
+  const [redirect] = useRedirect();
 
   const logoutTrigger = () => setState('logout');
 
@@ -32,13 +32,13 @@ const Logout = () => {
       console.log('logout api response:', authInfo);
 
     dispatch(rootOperations.resetApp());
-    setUrl('/');
+    redirect('/');
     dispatch(
       snackbarOperations.pushNotification({
         msg: 'see you soon',
       })
     );
-  }, [dispatch, setUrl]);
+  }, [dispatch, redirect]);
 
   useEffect(() => {
     if (state === 'logout') logout();

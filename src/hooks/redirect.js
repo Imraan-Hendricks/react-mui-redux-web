@@ -1,20 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 
 const Redirect = () => {
   const history = useHistory();
 
-  const [url, setUrl] = useState(undefined);
+  const redirect = useCallback(
+    (url) => {
+      if (url) {
+        if (url === '/back') return history.goBack();
+        history.push(url);
+      }
+    },
+    [history]
+  );
 
-  useEffect(() => {
-    if (url) {
-      if (url === '/back') history.goBack();
-      else history.push(url);
-      setUrl(undefined);
-    }
-  }, [history, url]);
-
-  return { setUrl };
+  return [redirect];
 };
 
 export default Redirect;

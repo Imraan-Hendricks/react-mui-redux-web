@@ -9,7 +9,7 @@ const Authorization = (type, url) => {
 
   const redirect = useCallback(
     (url) => {
-      if (url && history) {
+      if (url) {
         if (url === '/back') return history.goBack();
         history.push(url);
       }

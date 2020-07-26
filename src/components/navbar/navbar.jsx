@@ -9,25 +9,25 @@ import Logo from './logo/logo';
 const Navbar = () => {
   const _id = useSelector((state) => state.components.auth.state._id);
 
-  const { setUrl } = useRedirect();
+  const [redirect] = useRedirect();
 
   const isAuthenticated = () => {
     if (!_id) return false;
     return true;
   };
 
-  const home = { id: 'home', name: 'home', onClick: () => setUrl('/') };
+  const home = { id: 'home', name: 'home', onClick: () => redirect('/') };
 
   const contact = {
     id: 'contact',
     name: 'contact',
-    onClick: () => setUrl('/contact'),
+    onClick: () => redirect('/contact'),
   };
 
   const login = {
     id: 'login',
     name: 'login',
-    onClick: () => setUrl('/login'),
+    onClick: () => redirect('/login'),
   };
 
   const management = {
@@ -37,12 +37,12 @@ const Navbar = () => {
       {
         id: 'admin',
         name: 'admin',
-        onClick: () => setUrl('/management/admin'),
+        onClick: () => redirect('/management/admin'),
       },
       {
         id: 'roles',
         name: 'roles',
-        onClick: () => setUrl('/management/roles'),
+        onClick: () => redirect('/management/roles'),
       },
     ],
   };
@@ -50,7 +50,7 @@ const Navbar = () => {
   const logout = {
     id: 'logout',
     name: 'logout',
-    onClick: () => setUrl('/logout'),
+    onClick: () => redirect('/logout'),
   };
 
   const authLinks = [home, contact, logout, management];

@@ -6,7 +6,7 @@ import { useNotFoundStyles } from './not-found-styles';
 
 const NotFound = () => {
   useActiveNav('notFound');
-  const { setUrl } = useRedirect();
+  const [redirect] = useRedirect();
 
   const classes = useNotFoundStyles();
 
@@ -17,7 +17,7 @@ const NotFound = () => {
         variant='contained'
         color='primary'
         className={classes.button}
-        onClick={() => setUrl('/')}>
+        onClick={() => redirect('/')}>
         site home
       </Button>
     </div>
