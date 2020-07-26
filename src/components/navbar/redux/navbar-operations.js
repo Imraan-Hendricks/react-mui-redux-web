@@ -1,12 +1,8 @@
 import actions from './navbar-actions';
 
-const reset = () => (dispatch) => {
-  dispatch(actions.reset());
-};
+const reset = () => (dispatch) => dispatch(actions.reset());
 
-const setActive = (active) => (dispatch) => {
-  dispatch(actions.setActive(active));
-};
+const setActive = (active) => (dispatch) => dispatch(actions.setActive(active));
 
 export default {
   reset,

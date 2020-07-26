@@ -1,10 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Backdrop as BDrop, CircularProgress } from '@material-ui/core';
-import useBackdrop from './use-backdrop';
 import { useBackdropStyles } from './backdrop-styles';
 
 const Backdrop = () => {
-  const { isOpen } = useBackdrop();
+  const isOpen = useSelector((state) => state.components.backdrop.state.isOpen);
 
   const classes = useBackdropStyles();
 

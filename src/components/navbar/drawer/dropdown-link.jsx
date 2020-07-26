@@ -1,12 +1,23 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { ArrowDropDown, ArrowRight } from '@material-ui/icons';
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import DropdownItem from './dropdown-item';
-import useDropdownLink from './use-dropdown-link';
+import useToggle from '../../../hooks/toggle';
 import { useLinkStyles } from './drawer-styles';
 
 const DropdownLink = (props) => {
-  const { active, isOpen, getIsActive, toggle } = useDropdownLink();
+  const active = useSelector((state) => state.components.navbar.state.active);
+
+  const [isOpen, toggle] = useToggle(false);
+
+  const getIsActive = (active, dropdownItems) => {
+    let isActive = false;
+    dropdownItems.forEach((item) => {
+      if (!isActive) if (active === item.id) isActive = true;
+    });
+    return isActive;
+  };
 
   const classes = useLinkStyles(
     getIsActive(active, props.dropdownItems)

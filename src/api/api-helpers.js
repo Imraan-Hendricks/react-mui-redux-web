@@ -15,9 +15,7 @@ const handleFetch = async (endpoint, config) => {
 
   const apiRes = await res.json();
 
-  if (!apiRes.success) {
-    throw apiRes.err;
-  }
+  if (!apiRes.success) throw apiRes.err;
 
   return apiRes.data;
 };

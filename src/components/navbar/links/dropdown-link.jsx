@@ -1,18 +1,26 @@
-import React, { Fragment } from 'react';
+import React, { createRef, Fragment, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Button, Menu } from '@material-ui/core';
 import DropdownItem from './dropdown-item';
-import useDropdownLink from './use-dropdown-link';
 import { useLinkStyles } from './links-styles';
 
 const DropdownLink = (props) => {
-  const {
-    active,
-    anchorEl,
-    ref,
-    getIsActive,
-    handleClick,
-    handleClose,
-  } = useDropdownLink();
+  const [anchorEl, setAnchorEl] = useState(null);
+  const ref = createRef();
+
+  const active = useSelector((state) => state.components.navbar.state.active);
+
+  const getIsActive = (active, dropdownItems) => {
+    let isActive = false;
+    dropdownItems.forEach((item) => {
+      if (!isActive) if (active === item.id) isActive = true;
+    });
+    return isActive;
+  };
+
+  const handleClick = (event) => setAnchorEl(event.currentTarget);
+
+  const handleClose = () => setAnchorEl(null);
 
   const classes = useLinkStyles(
     getIsActive(active, props.dropdownItems)

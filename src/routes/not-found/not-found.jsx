@@ -1,10 +1,12 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import useNotFound from './use-not-found';
+import useActiveNav from '../../hooks/active-nav';
+import useRedirect from '../../hooks/redirect';
 import { useNotFoundStyles } from './not-found-styles';
 
 const NotFound = () => {
-  const { setUrl } = useNotFound();
+  useActiveNav('notFound');
+  const { setUrl } = useRedirect();
 
   const classes = useNotFoundStyles();
 

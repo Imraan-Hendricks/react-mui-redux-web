@@ -28,8 +28,6 @@ const persistConfig = {
   migrate: createMigrate(migrations, { debug: false }),
 };
 
-const persist = (reducer) => {
-  return persistReducer(persistConfig, reducer);
-};
+const persist = (reducer) => persistReducer(persistConfig, reducer);
 
 export default persist;

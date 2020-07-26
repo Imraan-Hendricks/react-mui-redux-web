@@ -1,9 +1,11 @@
 import React from 'react';
 import LogoutComp from '../../components/logout/logout';
-import useLogout from './use-logout';
+import useActiveNav from '../../hooks/active-nav';
+import useAuthorization from '../../hooks/authorization';
 
 const Logout = () => {
-  useLogout();
+  useActiveNav('logout');
+  useAuthorization('authenticated', '/');
 
   return (
     <div>

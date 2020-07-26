@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Drawer, List } from '@material-ui/core';
 import DropdownLink from './dropdown-link';
 import Link from './link';
 import MenuButton from './menu-button';
-import useDrawer from './use-drawer';
 import { useDrawerStyles } from './drawer-styles';
 
 const TemporaryDrawer = (props) => {
-  const { state, toggleDrawer } = useDrawer();
+  const [state, setState] = useState(false);
+
+  const toggleDrawer = (open, event) => {
+    if (
+      event.type === 'keydown' &&
+      (event.key === 'Tab' || event.key === 'Shift')
+    )
+      return;
+
+    setState(open);
+  };
 
   const classes = useDrawerStyles();
 

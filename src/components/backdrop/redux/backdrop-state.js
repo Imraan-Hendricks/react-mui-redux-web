@@ -9,11 +9,8 @@ const initialState = {
 export default function (state = initialState, action) {
   switch (action.type) {
     case types.SET_IS_OPEN:
-      return {
-        ...state,
-        isOpen: action.payload.isOpen,
-        openCounter: action.payload.openCounter,
-      };
+      const { isOpen, openCounter } = action.payload;
+      return { ...state, isOpen, openCounter };
     case types.RESET:
     case rootTypes.RESET_APP:
       return initialState;

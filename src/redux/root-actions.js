@@ -1,9 +1,7 @@
 import types from './root-types';
 
-const resetApp = () => {
-  return {
-    type: types.RESET_APP,
-  };
-};
+const resetApp = () => ({
+  type: types.RESET_APP,
+});
 
 export default { resetApp };

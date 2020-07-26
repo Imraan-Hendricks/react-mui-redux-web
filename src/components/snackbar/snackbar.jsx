@@ -1,14 +1,49 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
+import { shallowEqual, useSelector, useDispatch } from 'react-redux';
+import snackbarOperations from './redux/snackbar-operations';
 import { Snackbar, IconButton } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import Message from './message/message';
-import useSnackbar from './use-snackbar';
 import { useSnackbarStyles } from './snackbar-styles';
 
 const SimpleSnackbar = () => {
-  const { msg, type, open, handleClose } = useSnackbar();
+  const dispatch = useDispatch();
 
-  const classes = useSnackbarStyles({ type });
+  const [open, setOpen] = useState(false);
+
+  const { notifications, wait } = useSelector(
+    (state) => state.components.snackbar.state,
+    shallowEqual
+  );
+
+  useEffect(() => {
+    if (notifications.length > 0 && !wait) setOpen(true);
+  }, [notifications.length, wait]);
+
+  const getMsg = () => {
+    if (notifications.length === 0) return undefined;
+    return notifications[0].msg;
+  };
+
+  const getType = () => {
+    if (notifications.length === 0) return undefined;
+    return notifications[0].type;
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') return;
+
+    dispatch(snackbarOperations.setWait(true));
+    setOpen(false);
+
+    setTimeout(() => {
+      if (notifications.length > 0)
+        dispatch(snackbarOperations.removeNotification());
+      dispatch(snackbarOperations.setWait(false));
+    }, 1000);
+  };
+
+  const classes = useSnackbarStyles({ type: getType() });
 
   return (
     <Snackbar
@@ -19,7 +54,7 @@ const SimpleSnackbar = () => {
       open={open}
       autoHideDuration={6000}
       onClose={handleClose}
-      message={<Message msg={msg} type={type} />}
+      message={<Message msg={getMsg()} type={getType()} />}
       ContentProps={{
         classes: {
           root: classes.snackbar,

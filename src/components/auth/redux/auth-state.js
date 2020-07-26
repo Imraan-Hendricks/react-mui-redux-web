@@ -12,15 +12,8 @@ const initialState = {
 export default function (state = initialState, action) {
   switch (action.type) {
     case types.SET_USER:
-      let user = action.payload;
-      return {
-        ...state,
-        _id: user._id,
-        displayName: user.displayName,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-      };
+      const { _id, displayName, firstName, lastName, email } = action.payload;
+      return { ...state, _id, displayName, firstName, lastName, email };
     case types.RESET:
     case rootTypes.RESET_APP:
       return initialState;

@@ -17,12 +17,8 @@ const removeNotification = () => (dispatch, getState) => {
   dispatch(actions.removeNotification(notifications));
 };
 
-const reset = () => (dispatch) => {
-  dispatch(actions.reset());
-};
+const reset = () => (dispatch) => dispatch(actions.reset());
 
-const setWait = (wait) => (dispatch) => {
-  dispatch(actions.setWait(wait));
-};
+const setWait = (wait) => (dispatch) => dispatch(actions.setWait(wait));
 
 export default { pushNotification, removeNotification, reset, setWait };

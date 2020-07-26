@@ -1,9 +1,48 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+import { handle } from '../../utils/common';
+import { logout as logoutRequest } from '../../api/api-auth';
+import rootOperations from '../../redux/root-operations';
+import snackbarOperations from '../snackbar/redux/snackbar-operations';
+import useRedirect from '../../hooks/redirect';
 import { Button, CircularProgress } from '@material-ui/core';
-import useLogout from './use-logout';
 
 const Logout = () => {
-  const { state, logoutTrigger } = useLogout();
+  const dispatch = useDispatch();
+
+  const [state, setState] = useState('default');
+
+  const { setUrl } = useRedirect();
+
+  const logoutTrigger = () => setState('logout');
+
+  const logout = useCallback(async () => {
+    const [authInfo, err] = await handle(logoutRequest());
+    if (err) {
+      setState('error');
+      return dispatch(
+        snackbarOperations.pushNotification({
+          msg: err[0].msg,
+          type: 'error',
+        })
+      );
+    }
+
+    if (process.env.NODE_ENV === 'development')
+      console.log('logout api response:', authInfo);
+
+    dispatch(rootOperations.resetApp());
+    setUrl('/');
+    dispatch(
+      snackbarOperations.pushNotification({
+        msg: 'see you soon',
+      })
+    );
+  }, [dispatch, setUrl]);
+
+  useEffect(() => {
+    if (state === 'logout') logout();
+  }, [logout, state]);
 
   return (
     <div>

@@ -1,9 +1,11 @@
 import React from 'react';
 import LoginComp from '../../components/login/login';
-import useLogin from './use-login';
+import useActiveNav from '../../hooks/active-nav';
+import useAuthorization from '../../hooks/authorization';
 
 const Login = () => {
-  useLogin();
+  useActiveNav('login');
+  useAuthorization('notAuthenticated', '/');
 
   return (
     <div>

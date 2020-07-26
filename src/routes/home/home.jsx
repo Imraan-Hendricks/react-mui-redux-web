@@ -1,9 +1,9 @@
 import React from 'react';
 import Auth from '../../components/auth/auth';
-import useHome from './use-home';
+import useActiveNav from '../../hooks/active-nav';
 
 const Home = () => {
-  useHome();
+  useActiveNav('home');
 
   return (
     <div>

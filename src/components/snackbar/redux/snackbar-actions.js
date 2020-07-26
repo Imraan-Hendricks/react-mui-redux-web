@@ -1,36 +1,22 @@
 import types from './snackbar-types';
 
-const pushNotification = (notification, notifications) => {
-  const notificationsUpdate = [...notifications, notification];
+const pushNotification = (notification, notifications) => ({
+  type: types.PUSH_NOTIFICATION,
+  payload: [...notifications, notification],
+});
 
-  return {
-    type: types.PUSH_NOTIFICATION,
-    payload: notificationsUpdate,
-  };
-};
+const removeNotification = (notifications) => ({
+  type: types.PUSH_NOTIFICATION,
+  payload: notifications.filter((notification, index) => index > 0),
+});
 
-const removeNotification = (notifications) => {
-  const notificationsUpdate = notifications.filter((notification, index) => {
-    return index > 0;
-  });
+const reset = () => ({
+  type: types.RESET,
+});
 
-  return {
-    type: types.PUSH_NOTIFICATION,
-    payload: notificationsUpdate,
-  };
-};
-
-const reset = () => {
-  return {
-    type: types.RESET,
-  };
-};
-
-const setWait = (wait) => {
-  return {
-    type: types.SET_WAIT,
-    payload: wait,
-  };
-};
+const setWait = (wait) => ({
+  type: types.SET_WAIT,
+  payload: wait,
+});
 
 export default { pushNotification, removeNotification, reset, setWait };
