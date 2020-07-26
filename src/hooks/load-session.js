@@ -1,10 +1,10 @@
-import React, { Fragment, useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { handle } from '../../utils/common';
-import { getAuthInfo } from '../../api/api-auth';
-import authOperations from '../auth/redux/auth-operations';
-import backdropOperations from '../backdrop/redux/backdrop-operations';
-import snackbarOperations from '../snackbar/redux/snackbar-operations';
+import { handle } from '../utils/common';
+import { getAuthInfo } from '../api/api-auth';
+import authOperations from '../components/auth/redux/auth-operations';
+import backdropOperations from '../components/backdrop/redux/backdrop-operations';
+import snackbarOperations from '../components/snackbar/redux/snackbar-operations';
 
 const LoadSession = () => {
   const dispatch = useDispatch();
@@ -43,8 +43,6 @@ const LoadSession = () => {
   useEffect(() => {
     reqAuthInfo();
   }, [reqAuthInfo]);
-
-  return <Fragment />;
 };
 
 export default LoadSession;
