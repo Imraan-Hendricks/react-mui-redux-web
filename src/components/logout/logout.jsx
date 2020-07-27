@@ -12,7 +12,8 @@ const Logout = () => {
 
   const [state, setState] = useState('default');
 
-  const [redirect] = useRedirect();
+  const redirect = useRedirect();
+  const redirectCallback = useCallback(redirect, []);
 
   const logoutTrigger = () => setState('logout');
 
@@ -32,13 +33,13 @@ const Logout = () => {
       console.log('logout api response:', authInfo);
 
     dispatch(rootOperations.resetApp());
-    redirect('/');
+    redirectCallback('/');
     dispatch(
       snackbarOperations.pushNotification({
         msg: 'see you soon',
       })
     );
-  }, [dispatch, redirect]);
+  }, [dispatch, redirectCallback]);
 
   useEffect(() => {
     if (state === 'logout') logout();

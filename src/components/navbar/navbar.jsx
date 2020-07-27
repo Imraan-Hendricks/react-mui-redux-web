@@ -9,7 +9,7 @@ import Logo from './logo/logo';
 const Navbar = () => {
   const _id = useSelector((state) => state.components.auth.state._id);
 
-  const [redirect] = useRedirect();
+  const redirect = useRedirect();
 
   const isAuthenticated = () => {
     if (!_id) return false;

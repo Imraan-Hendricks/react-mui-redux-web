@@ -6,7 +6,7 @@ import { useNotFoundStyles } from './not-found-styles';
 
 const NotFound = () => {
   useActiveNav('notFound');
-  const [redirect] = useRedirect();
+  const redirect = useRedirect();
 
   const classes = useNotFoundStyles();
 
