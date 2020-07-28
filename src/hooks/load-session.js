@@ -2,22 +2,25 @@ import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { handle } from '../utils/common';
 import { getAuthInfo } from '../api/api-auth';
-import backdropOperations from '../components/backdrop/redux/backdrop-operations';
 import snackbarOperations from '../components/snackbar/redux/snackbar-operations';
 import useAuth from '../components/auth/redux/auth';
+import useBackdrop from '../components/backdrop/redux/backdrop';
 
 const LoadSession = () => {
   const dispatch = useDispatch();
 
   const [isReady, setIsReady] = useState(false);
 
+  const { setIsOpen } = useBackdrop();
+  const setIsOpenCallback = useCallback(setIsOpen, []);
+
   const { setUser } = useAuth();
   const setUserCallback = useCallback(setUser, []);
 
   useEffect(() => {
-    if (isReady) return dispatch(backdropOperations.setIsOpen(false));
-    dispatch(backdropOperations.setIsOpen(true));
-  }, [dispatch, isReady]);
+    if (isReady) return setIsOpenCallback(false);
+    setIsOpenCallback(true);
+  }, [setIsOpenCallback, isReady]);
 
   const reqAuthInfo = useCallback(async () => {
     const [authInfo, err] = await handle(getAuthInfo());
