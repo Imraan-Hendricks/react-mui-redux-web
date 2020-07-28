@@ -1,13 +1,13 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import navbarOperations from '../components/navbar/redux/navbar-operations';
+import { useCallback, useEffect } from 'react';
+import useNavbar from '../components/navbar/redux/navbar';
 
 const ActiveNav = (active) => {
-  const dispatch = useDispatch();
+  const { setActive } = useNavbar();
+  const setActiveCallback = useCallback(setActive, []);
 
   useEffect(() => {
-    dispatch(navbarOperations.setActive(active));
-  }, [dispatch, active]);
+    setActiveCallback(active);
+  }, [setActiveCallback, active]);
 };
 
 export default ActiveNav;

@@ -1,11 +1,11 @@
 import React from 'react';
 import { ArrowRight } from '@material-ui/icons';
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
-import { useSelector } from 'react-redux';
+import useNavbar from '../redux/navbar';
 import { useDropdownItemStyles } from './drawer-styles';
 
 const DropdownItem = (props) => {
-  const active = useSelector((state) => state.components.navbar.state.active);
+  const { active } = useNavbar();
 
   const classes = useDropdownItemStyles(
     active === props.id ? { active: true } : { active: false }

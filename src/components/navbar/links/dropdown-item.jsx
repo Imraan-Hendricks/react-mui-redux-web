@@ -1,10 +1,10 @@
 import React, { forwardRef } from 'react';
 import MenuItem from '@material-ui/core/MenuItem';
-import { useSelector } from 'react-redux';
+import useNavbar from '../redux/navbar';
 import { useDropdownItemStyles } from './links-styles';
 
 const DropdownItem = forwardRef((props, ref) => {
-  const active = useSelector((state) => state.components.navbar.state.active);
+  const { active } = useNavbar();
 
   const classes = useDropdownItemStyles(
     active === props.id ? { active: true } : { active: false }

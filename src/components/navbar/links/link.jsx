@@ -1,10 +1,10 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import { useSelector } from 'react-redux';
+import useNavbar from '../redux/navbar';
 import { useLinkStyles } from './links-styles';
 
 const Link = (props) => {
-  const active = useSelector((state) => state.components.navbar.state.active);
+  const { active } = useNavbar();
 
   const classes = useLinkStyles(
     active === props.id ? { active: true } : { active: false }
