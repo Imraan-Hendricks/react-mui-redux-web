@@ -2,14 +2,17 @@ import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { handle } from '../utils/common';
 import { getAuthInfo } from '../api/api-auth';
-import authOperations from '../components/auth/redux/auth-operations';
 import backdropOperations from '../components/backdrop/redux/backdrop-operations';
 import snackbarOperations from '../components/snackbar/redux/snackbar-operations';
+import useAuth from '../components/auth/redux/auth';
 
 const LoadSession = () => {
   const dispatch = useDispatch();
 
   const [isReady, setIsReady] = useState(false);
+
+  const { setUser } = useAuth();
+  const setUserCallback = useCallback(setUser, []);
 
   useEffect(() => {
     if (isReady) return dispatch(backdropOperations.setIsOpen(false));
@@ -30,7 +33,7 @@ const LoadSession = () => {
 
     if (!authInfo.isAuthenticated) return setIsReady(true);
 
-    dispatch(authOperations.setUser(authInfo.user));
+    setUserCallback(authInfo.user);
     dispatch(
       snackbarOperations.pushNotification({
         msg: `Welcome ${authInfo.user.displayName}`,
@@ -38,7 +41,7 @@ const LoadSession = () => {
     );
 
     setIsReady(true);
-  }, [dispatch]);
+  }, [dispatch, setUserCallback]);
 
   useEffect(() => {
     reqAuthInfo();

@@ -1,11 +1,11 @@
 import { useCallback, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import useAuth from '../components/auth/redux/auth';
 
 const Authorization = (type, url) => {
   const history = useHistory();
 
-  const _id = useSelector((state) => state.components.auth.state._id);
+  const { _id } = useAuth();
 
   const redirect = useCallback(
     (url) => {

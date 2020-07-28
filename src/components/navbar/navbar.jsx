@@ -1,13 +1,13 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import useRedirect from '../../hooks/redirect';
 import { AppBar, Toolbar } from '@material-ui/core';
 import Drawer from './drawer/drawer';
 import Links from './links/links';
 import Logo from './logo/logo';
+import useAuth from '../auth/redux/auth';
 
 const Navbar = () => {
-  const _id = useSelector((state) => state.components.auth.state._id);
+  const { _id } = useAuth();
 
   const redirect = useRedirect();
 

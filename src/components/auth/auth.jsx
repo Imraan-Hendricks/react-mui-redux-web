@@ -1,11 +1,8 @@
 import React from 'react';
-import { shallowEqual, useSelector } from 'react-redux';
+import useAuth from './redux/auth';
 
 const Auth = () => {
-  const { _id, displayName, firstName, lastName, email } = useSelector(
-    (state) => state.components.auth.state,
-    shallowEqual
-  );
+  const { _id, displayName, firstName, lastName, email } = useAuth();
 
   if (!_id) {
     return (
