@@ -1,20 +1,14 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { shallowEqual, useSelector, useDispatch } from 'react-redux';
-import snackbarOperations from './redux/snackbar-operations';
 import { Snackbar, IconButton } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import Message from './message/message';
+import useSnackbar from './redux/snackbar';
 import { useSnackbarStyles } from './snackbar-styles';
 
 const SimpleSnackbar = () => {
-  const dispatch = useDispatch();
-
   const [open, setOpen] = useState(false);
 
-  const { notifications, wait } = useSelector(
-    (state) => state.components.snackbar.state,
-    shallowEqual
-  );
+  const { notifications, wait, removeNotification, setWait } = useSnackbar();
 
   useEffect(() => {
     if (notifications.length > 0 && !wait) setOpen(true);
@@ -32,14 +26,12 @@ const SimpleSnackbar = () => {
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') return;
-
-    dispatch(snackbarOperations.setWait(true));
+    setWait(true);
     setOpen(false);
 
     setTimeout(() => {
-      if (notifications.length > 0)
-        dispatch(snackbarOperations.removeNotification());
-      dispatch(snackbarOperations.setWait(false));
+      if (notifications.length > 0) removeNotification();
+      setWait(false);
     }, 1000);
   };
 

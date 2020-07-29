@@ -1,19 +1,20 @@
 import actions from './snackbar-actions';
 
-const pushNotification = (notification) => (dispatch, getState) => {
-  const wait = getState().components.snackbar.state.wait;
+const pushNotification = (notification, notifications, wait) => (
+  dispatch,
+  getState
+) => {
   if (!wait) {
-    const notifications = getState().components.snackbar.state.notifications;
     return dispatch(actions.pushNotification(notification, notifications));
   }
   setTimeout(() => {
-    const notifications = getState().components.snackbar.state.notifications;
-    dispatch(actions.pushNotification(notification, notifications));
+    const notificationsUpdate = getState().components.snackbar.state
+      .notifications;
+    dispatch(actions.pushNotification(notification, notificationsUpdate));
   }, 1000);
 };
 
-const removeNotification = () => (dispatch, getState) => {
-  const notifications = getState().components.snackbar.state.notifications;
+const removeNotification = (notifications) => (dispatch) => {
   dispatch(actions.removeNotification(notifications));
 };
 

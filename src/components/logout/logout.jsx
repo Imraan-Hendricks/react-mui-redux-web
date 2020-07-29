@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux';
 import { handle } from '../../utils/common';
 import { logout as logoutRequest } from '../../api/api-auth';
 import rootOperations from '../../redux/root-operations';
-import snackbarOperations from '../snackbar/redux/snackbar-operations';
 import useRedirect from '../../hooks/redirect';
+import useSnackbar from '../snackbar/redux/snackbar';
 import { Button, CircularProgress } from '@material-ui/core';
 
 const Logout = () => {
@@ -15,18 +15,19 @@ const Logout = () => {
   const redirect = useRedirect();
   const redirectCallback = useCallback(redirect, []);
 
+  const { pushNotification } = useSnackbar();
+  const pushNotificationCallback = useCallback(pushNotification, []);
+
   const logoutTrigger = () => setState('logout');
 
   const logout = useCallback(async () => {
     const [authInfo, err] = await handle(logoutRequest());
     if (err) {
       setState('error');
-      return dispatch(
-        snackbarOperations.pushNotification({
-          msg: err[0].msg,
-          type: 'error',
-        })
-      );
+      return pushNotificationCallback({
+        msg: err[0].msg,
+        type: 'error',
+      });
     }
 
     if (process.env.NODE_ENV === 'development')
@@ -34,12 +35,10 @@ const Logout = () => {
 
     dispatch(rootOperations.resetApp());
     redirectCallback('/');
-    dispatch(
-      snackbarOperations.pushNotification({
-        msg: 'see you soon',
-      })
-    );
-  }, [dispatch, redirectCallback]);
+    pushNotificationCallback({
+      msg: 'see you soon',
+    });
+  }, [dispatch, pushNotificationCallback, redirectCallback]);
 
   useEffect(() => {
     if (state === 'logout') logout();
