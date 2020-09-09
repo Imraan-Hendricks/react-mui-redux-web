@@ -1,6 +1,7 @@
 import React from 'react';
-import Auth from '../../components/auth/auth';
 import useActiveNav from '../../hooks/active-nav';
+
+import Auth from '../../modules/auth/auth';
 
 const Home = () => {
   useActiveNav('home');

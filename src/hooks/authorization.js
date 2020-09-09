@@ -1,6 +1,6 @@
 import { useCallback, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import useAuth from '../components/auth/redux/auth';
+import useAuth from '../modules/auth/redux/auth';
 
 const Authorization = (type, url) => {
   const history = useHistory();

@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
 import { handle } from '../utils/common';
 import { getAuthInfo } from '../api/api-auth';
-import useAuth from '../components/auth/redux/auth';
-import useBackdrop from '../components/backdrop/redux/backdrop';
-import useSnackbar from '../components/snackbar/redux/snackbar';
+import useAuth from '../modules/auth/redux/auth';
+import useBackdrop from '../modules/backdrop/redux/backdrop';
+import useSnackbar from '../modules/snackbar/redux/snackbar';
 
 const LoadSession = () => {
   const [isReady, setIsReady] = useState(false);

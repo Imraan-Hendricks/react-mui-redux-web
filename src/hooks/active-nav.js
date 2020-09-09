@@ -1,5 +1,5 @@
 import { useCallback, useEffect } from 'react';
-import useNavbar from '../components/navbar/redux/navbar';
+import useNavbar from '../modules/navbar/redux/navbar';
 
 const ActiveNav = (active) => {
   const { setActive } = useNavbar();
