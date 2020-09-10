@@ -3,7 +3,7 @@ import snackbarOperations from './snackbar-operations';
 
 const Snackbar = () => {
   const { notifications, wait } = useSelector(
-    (state) => state.modules.snackbar.state,
+    (state) => state.modules.snackbar,
     shallowEqual
   );
 

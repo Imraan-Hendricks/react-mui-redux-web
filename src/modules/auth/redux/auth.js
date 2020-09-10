@@ -3,7 +3,7 @@ import authOperations from './auth-operations';
 
 const Auth = () => {
   const { _id, displayName, firstName, lastName, email } = useSelector(
-    (state) => state.modules.auth.state,
+    (state) => state.modules.auth,
     shallowEqual
   );
 

@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import navbarOperations from './navbar-operations';
 
 const Navbar = () => {
-  const active = useSelector((state) => state.modules.navbar.state.active);
+  const active = useSelector((state) => state.modules.navbar.active);
 
   const dispatch = useDispatch();
 

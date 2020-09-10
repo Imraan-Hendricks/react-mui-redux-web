@@ -3,7 +3,7 @@ import backdropOperations from './backdrop-operations';
 
 const Backdrop = () => {
   const { isOpen, openCounter } = useSelector(
-    (state) => state.modules.backdrop.state,
+    (state) => state.modules.backdrop,
     shallowEqual
   );
 

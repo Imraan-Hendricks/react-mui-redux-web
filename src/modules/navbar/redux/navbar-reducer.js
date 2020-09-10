@@ -1,14 +1,22 @@
-import { combineReducers } from 'redux';
-import stateReducer from './navbar-state';
+import rootTypes from '../../../redux/root-types';
+import types from './navbar-types';
 
-const combinedReducer = combineReducers({
-  state: stateReducer,
-});
+const initialState = {
+  active: null,
+};
 
-const navbarReducer = (state, action) => {
+const navbarReducer = (state = initialState, action) => {
   switch (action.type) {
+    case types.SET_ACTIVE:
+      return {
+        ...state,
+        active: action.payload,
+      };
+    case types.RESET:
+    case rootTypes.RESET_APP:
+      return initialState;
     default:
-      return combinedReducer(state, action);
+      return state;
   }
 };
 

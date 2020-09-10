@@ -1,14 +1,21 @@
-import { combineReducers } from 'redux';
-import stateReducer from './backdrop-state';
+import rootTypes from '../../../redux/root-types';
+import types from './backdrop-types';
 
-const combinedReducers = combineReducers({
-  state: stateReducer,
-});
+const initialState = {
+  isOpen: false,
+  openCounter: 0,
+};
 
-const backdropReducer = (state, action) => {
+const backdropReducer = function (state = initialState, action) {
   switch (action.type) {
+    case types.SET_IS_OPEN:
+      const { isOpen, openCounter } = action.payload;
+      return { ...state, isOpen, openCounter };
+    case types.RESET:
+    case rootTypes.RESET_APP:
+      return initialState;
     default:
-      return combinedReducers(state, action);
+      return state;
   }
 };
 
