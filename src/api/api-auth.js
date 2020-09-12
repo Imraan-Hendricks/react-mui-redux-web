@@ -1,17 +1,7 @@
 import { handleFetch } from './api-helpers';
 
-const getAuthInfo = () =>
-  new Promise((resolve, reject) =>
-    handleFetch('/api/auth')
-      .then((authInfo) => resolve(authInfo))
-      .catch((err) => reject(err))
-  );
+const getAuthInfo = () => handleFetch('/api/auth');
 
-const logout = () =>
-  new Promise((resolve, reject) =>
-    handleFetch('/api/auth/logout')
-      .then((authInfo) => resolve(authInfo))
-      .catch((err) => reject(err))
-  );
+const logout = () => handleFetch('/api/auth/logout');
 
 export { getAuthInfo, logout };
